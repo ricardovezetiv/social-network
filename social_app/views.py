@@ -1,5 +1,11 @@
 from django.shortcuts import render
+from .models import Profile
 
 
 def dashboard(request):
-    return render(request, "social_app/base.html")
+    return render(request, "social_app/pages/base.html")
+
+
+def profile_list(request):
+    profiles = Profile.objects.exclude(user=request.user)
+    return render(request, "social_app/partials/profile_list.html", {"profiles": profiles})

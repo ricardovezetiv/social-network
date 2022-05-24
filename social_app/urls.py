@@ -5,4 +5,5 @@ app_name = "social_app"
 
 urlpatterns = [
     path("", views.dashboard, name="dashboard"),
+    path("profile_list/", views.profile_list, name="profile_list"),
 ]
