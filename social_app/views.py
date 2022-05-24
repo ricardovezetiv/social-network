@@ -3,7 +3,7 @@ from .models import Profile
 
 
 def dashboard(request):
-    return render(request, "social_app/pages/base.html")
+    return render(request, "social_app/partials/dashboard.html")
 
 
 def profile_list(request):
