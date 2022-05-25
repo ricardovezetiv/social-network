@@ -1,9 +1,26 @@
-from django.shortcuts import render
-from .models import Profile
+from django.shortcuts import render, redirect
+from .forms import DweetForm
+from .models import Dweet, Profile
 
 
 def dashboard(request):
-    return render(request, "social_app/partials/dashboard.html")
+    form = DweetForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            dweet = form.save(commit=False)
+            dweet.user = request.user
+            dweet.save()
+            return redirect("social_app:dashboard")
+
+    followed_dweets = Dweet.objects.filter(
+        user__profile__in=request.user.profile.follows.all()
+    ).order_by("-created_at")
+
+    return render(
+        request,
+        "social_app/partials/dashboard.html",
+        {"form": form, "dweets": followed_dweets},
+    )
 
 
 def profile_list(request):
