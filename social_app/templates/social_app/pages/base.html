@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,19 +8,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Network</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
 </head>
 <body>
 
-    <a href="{% url 'social_app:dashboard' %} ">
+
         <section class="hero is-small is-success mb-4">
             <div class="hero-body">
-                <h1 class="title is-1">Social Network</h1>
-                <p class="subtitle is-4">
-                    Your tiny social network built with Django
-                </p>
+                <div class="columns">
+                    <div class="column is-10">
+                        <a href="{% url 'social_app:dashboard' %} ">
+                            <h1 class="title is-1">Social Network</h1>
+                            <p class="subtitle is-4">
+                                Your tiny social network built with Django
+                            </p>
+                        </a>
+                    </div>
+                    <div class="column is-2">
+                        <span>
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'members:logout' %} ">
+                                    <p class="subtitle is-7 has-text-right has-text-left-mobile">
+                                        <strong>Logout</strong>
+                                    </p>
+                                </a>
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
             </div>
         </section>
-    </a>
 
     <div class="container">
         <div class="columns">

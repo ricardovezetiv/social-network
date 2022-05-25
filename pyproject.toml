@@ -7,6 +7,7 @@ authors = ["Ricardo Branco <ricardo.vezetiv@mail.ru>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 Django = "^4.0.4"
+fontawesomefree = "^6.1.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

@@ -4,23 +4,26 @@ from .models import Dweet, Profile
 
 
 def dashboard(request):
-    form = DweetForm(request.POST or None)
-    if request.method == "POST":
-        if form.is_valid():
-            dweet = form.save(commit=False)
-            dweet.user = request.user
-            dweet.save()
-            return redirect("social_app:dashboard")
+    if request.user.is_authenticated:
+        form = DweetForm(request.POST or None)
+        if request.method == "POST":
+            if form.is_valid():
+                dweet = form.save(commit=False)
+                dweet.user = request.user
+                dweet.save()
+                return redirect("social_app:dashboard")
 
-    followed_dweets = Dweet.objects.filter(
-        user__profile__in=request.user.profile.follows.all()
-    ).order_by("-created_at")
+        followed_dweets = Dweet.objects.filter(
+            user__profile__in=request.user.profile.follows.all()
+        ).order_by("-created_at")
 
-    return render(
-        request,
-        "social_app/partials/dashboard.html",
-        {"form": form, "dweets": followed_dweets},
-    )
+        return render(
+            request,
+            "social_app/partials/dashboard.html",
+            {"form": form, "dweets": followed_dweets},
+        )
+    else:
+        return redirect('/members/login/')
 
 
 def profile_list(request):
