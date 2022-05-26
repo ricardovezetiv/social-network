@@ -58,26 +58,28 @@
         </h1>
     </div>
     <div class="columns is-multiline is-mobile">
-        {% for profile in profiles %}
-            <div class="column is-6">
-                <div class="block">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-content">
-                                    <p class="title is-4">
-                                        {{ profile.user.username }}
-                                    </p>
-                                    <p class="subtitle is-6">
-                                        @{{ profile.user.username|lower }}
-                                    </p>
+        {% if profiles|length != 0 %}
+            {% for profile in profiles %}
+                <div class="column is-6">
+                    <div class="block">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-content">
+                                        <p class="title is-4">
+                                            {{ profile.user.username }}
+                                        </p>
+                                        <p class="subtitle is-6">
+                                            @{{ profile.user.username|lower }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor%}
+            {% endfor%}
+        {% endif %}
     </div>
 </div>
 
