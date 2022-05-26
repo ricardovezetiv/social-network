@@ -23,16 +23,20 @@ def dashboard(request):
             {"form": form, "dweets": followed_dweets},
         )
     else:
-        return redirect('/members/login/')
+        return redirect("/members/login/")
 
 
 def profile_list(request):
     profiles = Profile.objects.exclude(user=request.user)
-    return render(request, "social_app/partials/profile_list.html", {"profiles": profiles})
+    return render(
+        request,
+        "social_app/partials/profile_list.html",
+        {"profiles": profiles},
+    )
 
 
 def profile(request, pk):
-    if not hasattr(request.user, 'profile'):
+    if not hasattr(request.user, "profile"):
         missing_profile = Profile(user=request.user)
         missing_profile.save()
 
@@ -49,4 +53,6 @@ def profile(request, pk):
             current_user_profile.follows.remove(profile)
 
         current_user_profile.save()
-    return render(request, "social_app/partials/profile.html", {"profile": profile})
+    return render(
+        request, "social_app/partials/profile.html", {"profile": profile}
+    )
