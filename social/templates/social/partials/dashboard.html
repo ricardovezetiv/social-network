@@ -1,11 +1,11 @@
-{% extends 'social_app/pages/base.html' %}
+{% extends 'social/pages/base.html' %}
 
 {% block content %}
 
 <div class="column">
     {% for dweet in dweets %}
         <div class="box">
-            {{dweet.body}}
+            {{ dweet.body }}
             <span class="is-small has-text-grey-light">
                 ({{ dweet.created_at }} by {{ dweet.user.username }})
             </span>
@@ -16,7 +16,7 @@
 <div class="column is-one-third">
 
     <div class="block">
-        <a href="{% url 'social_app:profile_list' %} ">
+        <a href="{% url 'social:profile_list' %} ">
             <button class="button is-dark is-outlined is-fullwidth">
                 All Profiles
             </button>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="block">
-        <a href="{% url 'social_app:profile' request.user.profile.id %} ">
+        <a href="{% url 'social:profile' request.user.profile.id %} ">
             <button class="button is-success is-light is-outlined is-fullwidth">
                 My Profile
             </button>

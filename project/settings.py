@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "fontawesomefree",
     "members",
-    "social_app",
+    "social",
 ]
 
 MIDDLEWARE = [

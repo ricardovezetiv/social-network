@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from social_app.models import Profile
+from social.models import Profile
 
 
 def login_view(request):

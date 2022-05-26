@@ -1,11 +1,11 @@
-{% extends 'social_app/pages/base.html' %}
+{% extends 'social/pages/base.html' %}
 
 {% block content %}
 
 <div class="column">
     <div class="block">
         <h1 class="title is-1">
-            {{profile.user.username|upper}}'s Dweets
+            {{ profile.user.username|upper }}'s Dweets
         </h1>
 
         <form method="post">
@@ -40,7 +40,7 @@
 
 <div class="column is-one-third">
     <div class="block">
-        <a href="{% url 'social_app:profile_list' %}">
+        <a href="{% url 'social:profile_list' %}">
             <button class="button is-dark is-outlined is-fullwidth">
                 All Profiles
             </button>
@@ -49,13 +49,13 @@
 
     <div class="block">
         <h3 class="title is-4">
-            {{profile.user.username}} follows:
+            {{ profile.user.username }} follows:
         </h3>
         <div class="content">
             <ul>
                 {% for following in profile.follows.all %}
                 <li>
-                    <a href="{% url 'social_app:profile' following.id %}">
+                    <a href="{% url 'social:profile' following.id %}">
                         {{ following }}
                     </a>
                 </li>
@@ -66,13 +66,13 @@
 
     <div class="block">
         <h3 class="title is-4">
-            {{profile.user.username}} is followed by:
+            {{ profile.user.username }} is followed by:
         </h3>
         <div class="content">
             <ul>
                 {% for follower in profile.followed_by.all %}
                 <li>
-                    <a href="{% url 'social_app:profile' follower.id %}">
+                    <a href="{% url 'social:profile' follower.id %}">
                         {{ follower }}
                     </a>
                 </li>

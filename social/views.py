@@ -11,7 +11,7 @@ def dashboard(request):
                 dweet = form.save(commit=False)
                 dweet.user = request.user
                 dweet.save()
-                return redirect("social_app:dashboard")
+                return redirect("social:dashboard")
 
         followed_dweets = Dweet.objects.filter(
             user__profile__in=request.user.profile.follows.all()
@@ -19,7 +19,7 @@ def dashboard(request):
 
         return render(
             request,
-            "social_app/partials/dashboard.html",
+            "social/partials/dashboard.html",
             {"form": form, "dweets": followed_dweets},
         )
     else:
@@ -30,7 +30,7 @@ def profile_list(request):
     profiles = Profile.objects.exclude(user=request.user)
     return render(
         request,
-        "social_app/partials/profile_list.html",
+        "social/partials/profile_list.html",
         {"profiles": profiles},
     )
 
@@ -54,5 +54,5 @@ def profile(request, pk):
 
         current_user_profile.save()
     return render(
-        request, "social_app/partials/profile.html", {"profile": profile}
+        request, "social/partials/profile.html", {"profile": profile}
     )

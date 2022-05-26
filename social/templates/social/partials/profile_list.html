@@ -1,4 +1,4 @@
-{% extends 'social_app/pages/base.html' %}
+{% extends 'social/pages/base.html' %}
 
 {% block content %}
 
@@ -6,7 +6,7 @@
     {% for profile in profiles %}
         <div class="block">
             <div class="card">
-                <a href="{% url 'social_app:profile' profile.id %}">
+                <a href="{% url 'social:profile' profile.id %}">
                     <div class="card-content">
                         <div class="media">
                             <div class="media-left">
