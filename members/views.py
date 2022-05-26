@@ -41,6 +41,10 @@ def register_view(request):
             return redirect("/")
     else:
         form = UserCreationForm()
-    return render(request, 'authenticate/register.html', {
-        'form': form,
-    })
+    return render(
+        request,
+        "authenticate/register.html",
+        {
+            "form": form,
+        },
+    )
