@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
 from social.models import Profile
 
 
@@ -29,3 +30,17 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect("/")
+
+
+def register_view(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Resgistration Successful!")
+            return redirect("/")
+    else:
+        form = UserCreationForm()
+    return render(request, 'authenticate/register.html', {
+        'form': form,
+    })

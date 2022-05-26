@@ -53,10 +53,17 @@
 <div class="column is-6">
     <div class="block"></div>
     <div class="block">
-        <h1 class="title is-2">
+        <h1 class="title is-3">
             Enabled Users
         </h1>
     </div>
+    <div class="block">
+            <a href="{% url 'members:register' %}">
+                <p class="subtitle is-6 has-text-right">
+                    <strong>Register</strong>
+                </p>
+            </a>
+        </div>
     <div class="columns is-multiline is-mobile">
         {% if profiles|length != 0 %}
             {% for profile in profiles %}

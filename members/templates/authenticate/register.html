@@ -1,0 +1,32 @@
+{% extends 'social/pages/base.html' %}
+
+{% block content %}
+
+<div class="column">
+    <div class="block">
+        {% if form.errors %}
+            <article class="message is-warning">
+                <div class="message-body">
+                    <p>There was an error with your form...</p>
+                </div>
+            </article>
+        {% endif %}
+    </div>
+    <div class="block">
+        <h1 class="title is-1">
+            Register User
+        </h1>
+        <form action="{% url 'members:register' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <div class="field">
+                <p class="control">
+                    <button class="button is-success">Submit</button>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
