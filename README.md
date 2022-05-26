@@ -1,9 +1,5 @@
 # social-network
-Programa que simula uma rede social
-
-# todo-list
-Gerencie tarefas de forma fácil e descomplicada! Crie, edite e exclua tarefas,
-com a opção também de marcar uma tarefa como concluida.
+Rede Social simples e divertida! Crie o seu usuário, publique mensagens e siga outros usuários.
 
 # Para instalar
 
